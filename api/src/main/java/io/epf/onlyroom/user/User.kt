@@ -1,4 +1,4 @@
-package io.epf.onlyroom
+package io.epf.onlyroom.user
 
 import java.util.*
 import javax.persistence.*
