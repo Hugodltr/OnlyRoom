@@ -1,4 +1,4 @@
-package io.takima.demo;
+package io.epf.onlyroom;
 
 import org.springframework.web.bind.annotation.*;
 

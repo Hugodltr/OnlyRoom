@@ -1,4 +1,4 @@
-package io.takima.demo;
+package io.epf.onlyroom;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -8,11 +8,11 @@
     <version>2.3.2.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>io.takima</groupId>
-  <artifactId>demo</artifactId>
+  <groupId>io.epf</groupId>
+  <artifactId>onlyRoom</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>api</name>
-  <description>Demo project for Spring Boot Training, API only</description>
+  <description>Meeting rooms booking, API only</description>
 
   <properties>
     <java.version>1.8</java.version>

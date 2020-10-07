@@ -1,4 +1,4 @@
-package io.takima.demo;
+package io.epf.onlyroom;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

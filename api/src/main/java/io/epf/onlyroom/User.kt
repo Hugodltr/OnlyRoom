@@ -1,4 +1,4 @@
-package io.takima.demo
+package io.epf.onlyroom
 
 import javax.persistence.*
 
