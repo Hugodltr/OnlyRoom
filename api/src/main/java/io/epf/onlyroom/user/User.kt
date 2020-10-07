@@ -1,5 +1,6 @@
 package io.epf.onlyroom
 
+import java.util.*
 import javax.persistence.*
 
 /**
@@ -9,9 +10,8 @@ import javax.persistence.*
 data class User(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,
-        @Column(name = "first_name") var firstName: String?,
-        @Column(name = "last_name") var lastName: String?,
-        @Column(name = "age") var age: Int?) {
+        @Column(name = "name") var name: String?,
+        @Column(name = "email") var email: String?,
+        @Column(name = "birth_date") var birthDate: Date?) {
     constructor() : this(null, null, null, null)
-
 }
