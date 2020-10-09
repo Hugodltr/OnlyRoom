@@ -1,5 +1,7 @@
 package io.epf.onlyroom.user
 
+import io.epf.onlyroom.guest.Guest
+import io.epf.onlyroom.reservation.Reservation
 import java.util.*
 import javax.persistence.*
 
@@ -12,6 +14,8 @@ data class User(
         @Id var id: Long?,
         @Column(name = "name") var name: String?,
         @Column(name = "email") var email: String?,
-        @Column(name = "birth_date") var birthDate: Date?) {
-    constructor() : this(null, null, null, null)
+        @Column(name = "birth_date") var birthDate: Date?,
+        @OneToMany(mappedBy="user") var reservations: List<Reservation>? = mutableListOf(),
+        @OneToMany(mappedBy="user") var guests: List<Guest>? = mutableListOf()) {
+    constructor() : this(null, null, null, null, null, null)
 }

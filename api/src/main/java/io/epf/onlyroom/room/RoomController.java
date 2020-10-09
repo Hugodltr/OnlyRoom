@@ -1,7 +1,5 @@
 package io.epf.onlyroom.room;
 
-import io.epf.onlyroom.user.User;
-import io.epf.onlyroom.user.UserDAO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
