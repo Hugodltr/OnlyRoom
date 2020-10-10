@@ -10,3 +10,15 @@ alter table reservations add constraint FKljt6q1tp205b0h26eiegc5mx6 foreign key 
 alter table reservations add constraint FKb5g9io5h54iwl2inkno50ppln foreign key (user_id) references users (id);
 alter table room_facility add constraint FKiu05ehd9xtbsiveie9yjne5co foreign key (facility_id) references rooms (id);
 alter table room_facility add constraint FKlxbafw7thgw4owxi86fqil42p foreign key (room_id) references facilities (id);
+create table facilities (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB
+create table guests (id bigint not null auto_increment, state varchar(255), reservation_id bigint not null, guest_id bigint not null, primary key (id)) engine=InnoDB
+create table reservations (id bigint not null auto_increment, begin_date datetime(6), end_date datetime(6), room_id bigint not null, user_id bigint not null, primary key (id)) engine=InnoDB
+create table room_facility (room_id bigint not null, facility_id bigint not null) engine=InnoDB
+create table rooms (id bigint not null auto_increment, capacity integer, name varchar(255), primary key (id)) engine=InnoDB
+create table users (id bigint not null auto_increment, birth_date datetime(6), email varchar(255), name varchar(255), primary key (id)) engine=InnoDB
+alter table guests add constraint FKhoafmnpk6hn0xnvl9i1fathbw foreign key (reservation_id) references reservations (id)
+alter table guests add constraint FK1mhl5dk32sjg1e6o7n8d93tx6 foreign key (guest_id) references users (id)
+alter table reservations add constraint FKljt6q1tp205b0h26eiegc5mx6 foreign key (room_id) references rooms (id)
+alter table reservations add constraint FKb5g9io5h54iwl2inkno50ppln foreign key (user_id) references users (id)
+alter table room_facility add constraint FKiu05ehd9xtbsiveie9yjne5co foreign key (facility_id) references rooms (id)
+alter table room_facility add constraint FKlxbafw7thgw4owxi86fqil42p foreign key (room_id) references facilities (id)
