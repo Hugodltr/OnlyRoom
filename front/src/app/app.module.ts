@@ -8,13 +8,15 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ListRoomsComponent } from './pages/list-rooms/list-rooms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListUsersComponent,
     AddUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListRoomsComponent
   ],
   imports: [
     BrowserModule,
