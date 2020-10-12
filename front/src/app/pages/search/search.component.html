@@ -1,21 +1,26 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                <div class="form-group">
-                    <label for="Name">
-                        Nom de la salle
-                    </label>
-                    <input type="text" id="firstName" class="form-control" name="firstName" ngModel>
+    <div class="card m-5">
+        <div class="card-header"> Rechercher un salle </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <div class="form-group">
+                            <label for="Name">
+                                Nom de la salle
+                            </label>
+                            <input type="text" id="firstName" class="form-control" name="firstName" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="Capacity">
+                                Capacité
+                            </label>
+                            <input type="text" id="lastName" class="form-control" name="lastName" ngModel>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Rechercher</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="Capacity">
-                        Capacité
-                    </label>
-                    <input type="text" id="lastName" class="form-control" name="lastName" ngModel>
-                </div>
-                <button class="btn btn-primary" type="submit">Rechercher</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
