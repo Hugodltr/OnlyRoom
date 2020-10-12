@@ -5,6 +5,10 @@ import io.epf.onlyroom.reservation.Reservation
 import java.util.*
 import javax.persistence.*
 
+enum class Role {
+    ROLE_USER, ROLE_ADMIN
+}
+
 /**
  *
  */
@@ -15,7 +19,9 @@ data class User(
         @Column(name = "name") var name: String?,
         @Column(name = "email") var email: String?,
         @Column(name = "birth_date") var birthDate: Date?,
+        @Column(name = "password") var passsword: String?,
+        @Column(name = "role") var role: Role?,
         @OneToMany(mappedBy="user") var reservations: List<Reservation>? = mutableListOf(),
         @OneToMany(mappedBy="user") var guests: List<Guest>? = mutableListOf()) {
-    constructor() : this(null, null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null, null, null)
 }
