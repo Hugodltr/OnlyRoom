@@ -9,7 +9,7 @@ data class Room(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,
         @Column(name = "name") var name: String?,
-        @Column(name = "capacity") var email: Int?,
+        @Column(name = "capacity") var capacity: Int?,
         @OneToMany(mappedBy="room") var reservations: List<Reservation>? = mutableListOf(),
         @ManyToMany(mappedBy = "rooms")
         var facilities: List<Facility>? = mutableListOf()) {
