@@ -1,4 +1,4 @@
-package io.epf.onlyroom.guest;
+package io.epf.onlyroom.entity.guest;
 
 import org.springframework.web.bind.annotation.*;
 

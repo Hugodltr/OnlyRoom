@@ -1,4 +1,4 @@
-package io.epf.onlyroom.room;
+package io.epf.onlyroom.entity.room;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

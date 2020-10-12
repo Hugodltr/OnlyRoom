@@ -1,6 +1,5 @@
-package io.epf.onlyroom.entity.user
+package io.epf.onlyroom.entity.role
 
-import java.util.*
 import javax.persistence.*
 
 

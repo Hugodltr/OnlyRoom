@@ -1,7 +1,5 @@
-package io.epf.onlyroom.reservation;
+package io.epf.onlyroom.entity.reservation;
 
-import io.epf.onlyroom.facilities.Facility;
-import io.epf.onlyroom.facilities.FacilityDAO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

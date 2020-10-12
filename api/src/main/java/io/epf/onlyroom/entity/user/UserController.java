@@ -1,4 +1,4 @@
-package io.epf.onlyroom.user;
+package io.epf.onlyroom.entity.user;
 
 import org.springframework.web.bind.annotation.*;
 

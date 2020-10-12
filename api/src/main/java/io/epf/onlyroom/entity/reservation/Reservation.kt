@@ -1,8 +1,8 @@
-package io.epf.onlyroom.reservation
+package io.epf.onlyroom.entity.reservation
 
-import io.epf.onlyroom.guest.Guest
-import io.epf.onlyroom.room.Room
-import io.epf.onlyroom.user.User
+import io.epf.onlyroom.entity.guest.Guest
+import io.epf.onlyroom.entity.room.Room
+import io.epf.onlyroom.entity.user.User
 import java.util.*
 import javax.persistence.*
 

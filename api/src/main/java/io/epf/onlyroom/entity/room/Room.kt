@@ -1,7 +1,7 @@
-package io.epf.onlyroom.room
+package io.epf.onlyroom.entity.room
 
-import io.epf.onlyroom.facilities.Facility
-import io.epf.onlyroom.reservation.Reservation
+import io.epf.onlyroom.entity.facilities.Facility
+import io.epf.onlyroom.entity.reservation.Reservation
 import javax.persistence.*
 
 @Entity(name="rooms")

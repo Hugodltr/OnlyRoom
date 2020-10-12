@@ -1,4 +1,4 @@
-package io.epf.onlyroom.facilities;
+package io.epf.onlyroom.entity.facilities;
 
 import org.springframework.web.bind.annotation.*;
 
