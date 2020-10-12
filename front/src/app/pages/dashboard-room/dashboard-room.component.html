@@ -1,14 +1,16 @@
 <div class="container-fluid">
     <div class="card m-5">
-        <div class="card-header"> Liste des salles </div>
+        <div class="card-header"> Disponibilité de la salle </div>
         <div class="card-body">
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Room name</th>
-                        <th scope="col">Capacity</th>
-                    </tr>
+                    <th scope="col"> Date</th>
+                    <th scope="col"> 8h-</th>
+                    <th scope="col"> 9h-</th>
+                    <th scope="col"> 10h-</th>
+                    <th scope="col"> 11h-</th>
+                    <th scope="col"> 12h-</th>
+                    <th scope="col"> ...</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
@@ -22,7 +24,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button class="btn float-right" [routerLink]="['/add-room']"> Ajouter une salle </button>
+            <button class="btn float-right" [routerLink]="['/add-user']"> Réserver </button>
         </div>
     </div>
 </div>

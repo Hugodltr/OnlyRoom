@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ListRoomsComponent } from './pages/list-rooms/list-rooms.component';
 import { SearchComponent } from './pages/search/search.component';
+import { DashboardRoomComponent } from './pages/dashboard-room/dashboard-room.component';
+import { AddRoomComponent } from './pages/add-room/add-room.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SearchComponent } from './pages/search/search.component';
     AddUserComponent,
     DashboardComponent,
     ListRoomsComponent,
-    SearchComponent
+    SearchComponent,
+    DashboardRoomComponent,
+    AddRoomComponent
   ],
   imports: [
     BrowserModule,
