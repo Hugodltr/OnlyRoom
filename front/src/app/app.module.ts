@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ListRoomsComponent } from './pages/list-rooms/list-rooms.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ListRoomsComponent } from './pages/list-rooms/list-rooms.component';
     ListUsersComponent,
     AddUserComponent,
     DashboardComponent,
-    ListRoomsComponent
+    ListRoomsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
