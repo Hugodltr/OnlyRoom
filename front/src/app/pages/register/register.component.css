@@ -1,0 +1,10 @@
+.card-header {
+    background-color:#D4EFFB;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #00BFFF;
+    color : black;
+}
