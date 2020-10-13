@@ -1,5 +1,6 @@
 package io.epf.onlyroom.entity.room;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class RoomController {
     }
 
     @GetMapping()
+    @PreAuthorize("hasRole('USER')")
     public List<Room> getRooms() {
         Iterable<Room> it = this.roomDAO.findAll();
         List<Room> rooms = new ArrayList<>();
@@ -26,11 +28,13 @@ public class RoomController {
     }
 
     @PostMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     public Room addRoom(@RequestBody Room room) {
         return this.roomDAO.save(room);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteRoom(@PathVariable Long id) {
         this.roomDAO.deleteById(id);
     }

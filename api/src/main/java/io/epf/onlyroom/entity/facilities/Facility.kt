@@ -10,8 +10,8 @@ data class Facility(
         @Column(name = "name") var name: String?,
         @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
         @JoinTable(name = "room_facility",
-                joinColumns = [JoinColumn(name = "room_id", referencedColumnName = "id")],
-                inverseJoinColumns = [JoinColumn(name = "facility_id", referencedColumnName = "id")])
+                joinColumns = [JoinColumn(name = "facility_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(name = "room_id", referencedColumnName = "id")])
         var rooms: List<Room>? = mutableListOf()) {
     constructor() : this(null, null, null )
 }

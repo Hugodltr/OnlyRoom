@@ -1,11 +1,12 @@
 import { defaultsDeep } from 'lodash';
+import { Facility } from '../facility/faciliy';
 
 
 export class Room {
     id: number;
     name: string;
     capacity: number;
-    facilities: Array<string>;
+    facilities: Array<Facility>;
 
 
     constructor(user?: Partial<Room>) {
