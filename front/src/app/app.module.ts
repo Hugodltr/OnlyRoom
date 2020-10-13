@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListUsersComponent } from './pages/list-users/list-users.component';
-import { AddUserComponent } from './pages/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -14,27 +13,30 @@ import { DashboardRoomComponent } from './pages/dashboard-room/dashboard-room.co
 import { AddRoomComponent } from './pages/add-room/add-room.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListUsersComponent,
-    AddUserComponent,
     DashboardComponent,
     ListRoomsComponent,
     SearchComponent,
     DashboardRoomComponent,
     AddRoomComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

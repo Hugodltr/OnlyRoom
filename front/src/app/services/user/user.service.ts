@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user/user.model';
+import { User } from '../../models/user/user.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { timeout } from 'rxjs/operators';
-import { defaultsDeep } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +18,6 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/users`).pipe(timeout(10000));
-  }
-
-  addUser(user: User): Observable<User> {
-    return this.http.post<any>(`${this.url}/users`, user).pipe(timeout(10000));
   }
 
   deleteUser(id: number): Observable<any> {

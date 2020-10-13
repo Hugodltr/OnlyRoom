@@ -12,7 +12,7 @@
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['/list']">Gestionnaire</a>
             </li>
-            <li class="nav-item float-right" [routerLinkActive]="['active']">
+            <li class="nav-item float-right" [routerLinkActive]="['active']" *ngIf="!isLoggedIn">
                 <a class="nav-link float-right" [routerLink]="['/login']">Connection</a>
             </li>
 
