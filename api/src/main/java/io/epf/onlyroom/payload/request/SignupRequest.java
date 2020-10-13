@@ -21,13 +21,14 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-    private Date birthDate;
+    @NotBlank
+    private String birthDate;
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

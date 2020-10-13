@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 
+import io.epf.onlyroom.entity.user.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,20 +30,23 @@ import io.epf.onlyroom.payload.request.SignupRequest;
 import io.epf.onlyroom.payload.response.JwtResponse;
 import io.epf.onlyroom.payload.response.MessageResponse;
 import io.epf.onlyroom.entity.role.RoleRepository;
-import io.epf.onlyroom.entity.user.UserRepository;
 import io.epf.onlyroom.security.jwt.JwtUtils;
 import io.epf.onlyroom.security.services.UserDetailsImpl;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
-    @Autowired
-    AuthenticationManager authenticationManager;
+
+    private final UserDAO userDAO;
+
+    public AuthController(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Autowired
-    UserRepository userRepository;
+    AuthenticationManager authenticationManager;
 
     @Autowired
     RoleRepository roleRepository;
@@ -70,19 +74,20 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
+                userDetails.getBirthDate(),
                 userDetails.getEmail(),
                 roles));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (this.userDAO.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (this.userDAO.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
@@ -119,7 +124,7 @@ public class AuthController {
         }
 
         user.setRoles(roles);
-        userRepository.save(user);
+        this.userDAO.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
