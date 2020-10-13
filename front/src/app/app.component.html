@@ -13,7 +13,11 @@
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" [routerLink]="['/list']">Gestionnaire</a>
             </li>
+<<<<<<< HEAD
             <li class="nav-item float-right " [routerLinkActive]="['active']">
+=======
+            <li class="nav-item float-right" [routerLinkActive]="['active']" *ngIf="!isLoggedIn">
+>>>>>>> 9c301e6f0a30df79f8ef752f5b7e155d240d2ea1
                 <a class="nav-link float-right" [routerLink]="['/login']">Connection</a>
             </li>
 
