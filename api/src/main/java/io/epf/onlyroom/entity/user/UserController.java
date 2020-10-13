@@ -1,6 +1,5 @@
 package io.epf.onlyroom.entity.user;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ public class UserController {
     }
 
     @GetMapping()
-    @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
         Iterable<User> it = this.userDAO.findAll();
         List<User> users = new ArrayList<>();
@@ -28,13 +26,11 @@ public class UserController {
     }
 
     @PostMapping()
-    @PreAuthorize("hasRole('ADMIN')")
     public User addUser(@RequestBody User user) {
         return this.userDAO.save(user);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(@PathVariable Long id) {
         this.userDAO.deleteById(id);
     }
