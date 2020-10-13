@@ -35,8 +35,6 @@ export class AddRoomComponent implements OnInit {
       facility.rooms.push(room);
       this.facilityService.addFacility(facility).subscribe(facility => this.facilities[index] = facility);
     });
-
-    console.log(room)
   }
 
 }
