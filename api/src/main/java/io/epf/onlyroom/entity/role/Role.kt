@@ -11,7 +11,7 @@ enum class ERole {
 data class Role(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,
-        @Column(name = "name") var name: ERole?,
-        @Column(name = "email") var email: String?) {
-    constructor() : this(null, null, null)
+        @Enumerated(EnumType.STRING)
+        @Column(name = "name") var name: ERole?) {
+    constructor() : this(null, null)
 }
