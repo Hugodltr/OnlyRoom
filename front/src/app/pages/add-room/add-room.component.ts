@@ -24,17 +24,19 @@ export class AddRoomComponent implements OnInit {
   onSubmit(ngForm: NgForm) {
     console.log(ngForm);
 
+    let facilities = []
+    ngForm.form.value.facilities.forEach(index => {
+      facilities.push(this.facilities[index])
+    });
+
     const room = defaultsDeep({
       id: null,
       name: ngForm.form.value.name,
       capacity: ngForm.form.value.capacity,
+      facilities: facilities
     });
 
-    ngForm.form.value.facilities.forEach(index => {
-      let facility = this.facilities[index];
-      facility.rooms.push(room);
-      this.facilityService.addFacility(facility).subscribe(facility => this.facilities[index] = facility);
-    });
+    this.roomService.addRoom(room).subscribe(room => console.log(room));
   }
 
 }

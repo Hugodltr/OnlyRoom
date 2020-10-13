@@ -10,7 +10,7 @@ alter table guests add constraint FKhoafmnpk6hn0xnvl9i1fathbw foreign key (reser
 alter table guests add constraint FK1mhl5dk32sjg1e6o7n8d93tx6 foreign key (guest_id) references users (id);
 alter table reservations add constraint FKljt6q1tp205b0h26eiegc5mx6 foreign key (room_id) references rooms (id);
 alter table reservations add constraint FKb5g9io5h54iwl2inkno50ppln foreign key (user_id) references users (id);
-alter table room_facility add constraint FKiu05ehd9xtbsiveie9yjne5co foreign key (facility_id) references rooms (id);
-alter table room_facility add constraint FKlxbafw7thgw4owxi86fqil42p foreign key (room_id) references facilities (id);
+alter table room_facility add constraint FK2752lvfqw6woja7xbvg2wsfof foreign key (facility_id) references facilities (id);
+alter table room_facility add constraint FKbaa1ldm4blxedeu9lrcjtqsrl foreign key (room_id) references rooms (id);
 alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles (id);
 alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id);
