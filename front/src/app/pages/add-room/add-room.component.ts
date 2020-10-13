@@ -37,8 +37,6 @@ export class AddRoomComponent implements OnInit {
     });
 
     console.log(room)
-
-    this.roomService.addRoom(room).subscribe(room => console.log(room));
   }
 
 }
