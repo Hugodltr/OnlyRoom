@@ -3,8 +3,9 @@ import { Room } from '../room/room';
 
 export class Reservation {
     id: number;
-    beginDate: Date;
-    endDate: Date;
+    date: Date;
+    beginHour: number;
+    endHour: number;
     room: Room;
 
 

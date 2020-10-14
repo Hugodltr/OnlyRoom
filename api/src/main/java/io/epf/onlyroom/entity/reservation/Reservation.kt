@@ -10,8 +10,9 @@ import javax.persistence.*
 data class Reservation(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,
-        @Column(name = "begin_date") var beginDate: Date?,
-        @Column(name = "end_date") var endDate: Date?,
+        @Column(name = "date") var date: Date?,
+        @Column(name = "begin_hour") var beginHour: Int?,
+        @Column(name = "end_hour") var endHour: Int?,
         @OneToMany(mappedBy="reservation") var guests: List<Guest>? = mutableListOf(),
         @ManyToOne
         @JoinColumn(name="room_id", nullable=false)
@@ -19,5 +20,5 @@ data class Reservation(
         @ManyToOne
         @JoinColumn(name="user_id", nullable=false)
         var user: User?) {
-        constructor() : this(null, null, null, null, null, null)
+        constructor() : this(null, null, null, null, null, null, null)
 }

@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'list', component: ListUsersComponent },

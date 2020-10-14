@@ -1,32 +1,84 @@
-<div class="container">
+<div class="container-fluid">
     <div class="card m-5">
-        <div class="card-header"> Rechercher un salle </div>
+        <div class="card-header"> Rechercher une salle </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12 col-sm-offset-2">
-                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
                         <div class="form-group">
-                            <label for="Capacity">
-                                Capacité
+                            <label for="capacity">
+                                Nombre de personnes
                             </label>
-                            <input type="text" id="firstName" class="form-control" name="firstName" ngModel>
+                            <input type="number" class="form-control" name="capacity" [(ngModel)]="form.capacity" required #capacity="ngModel" min="0" />
+                            <div class="alert-danger" *ngIf="f.submitted && capacity.invalid">
+                                <div *ngIf="capacity.errors.required">Capacity is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="Date">
-                                Date
+                            <label for="date">
+                                Jour de la réunion
                             </label>
-                            <input type="text" id="lastName" class="form-control" name="lastName" ngModel>
+                            <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required #date="ngModel" />
+                            <div class="alert-danger" *ngIf="f.submitted && date.invalid">
+                                <div *ngIf="date.errors.required">Date is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="Hour">
-                                Heure de début de réunion
+                            <label for="beginHour">
+                                Heure de début
                             </label>
-                            <input type="text" id="lastName" class="form-control" name="lastName" ngModel>
+                            <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required #beginHour="ngModel" />
+                            <div class="alert-danger" *ngIf="f.submitted && beginHour.invalid">
+                                <div *ngIf="beginHour.errors.required">beginHour is required</div>
+                            </div>
                         </div>
-                        <button class="btn" type="submit">Rechercher</button>
+                        <div class="form-group">
+                            <label for="endHour">
+                                Heure de fin 
+                            </label>
+                            <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required #endHour="ngModel" />
+                            <div class="alert-danger" *ngIf="f.submitted && endHour.invalid">
+                                <div *ngIf="endHour.errors.required">Date is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="facilities">
+                                Equipement(s)
+                            </label>
+
+                            <select name="facilitiesId" multiple class="form-control" [(ngModel)]="form.facilitiesId">
+                                <option *ngFor="let facility of facilities" [value]="facility.id">{{facility.name}}</option>
+                            </select>
+
+                        </div>
+                        <button class="btn btn-primary" type="submit">Rechercher</button>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="card m-5" *ngIf="f.submitted">
+        <div class="card-header"> Résultats </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">Nom de la salle</th>
+                        <th scope="col">Capacité</th>
+                        <th scope="col">Equipements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let room of rooms">
+                        <td>{{room.name}}</td>
+                        <td>{{room.capacity}}</td>
+                        <td>
+                            <span *ngFor="let facility of room.facilities">- {{facility.name}} </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

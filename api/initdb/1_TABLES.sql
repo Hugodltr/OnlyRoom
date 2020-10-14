@@ -1,6 +1,6 @@
 create table facilities (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB;
 create table guests (id bigint not null auto_increment, state varchar(255), reservation_id bigint not null, guest_id bigint not null, primary key (id)) engine=InnoDB;
-create table reservations (id bigint not null auto_increment, begin_date datetime(6), end_date datetime(6), room_id bigint not null, user_id bigint not null, primary key (id)) engine=InnoDB;
+create table reservations (id bigint not null auto_increment, begin_hour integer, date datetime(6), end_hour integer, room_id bigint not null, user_id bigint not null, primary key (id)) engine=InnoDB;
 create table roles (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB;
 create table room_facility (room_id bigint not null, facility_id bigint not null) engine=InnoDB;
 create table rooms (id bigint not null auto_increment, capacity integer, name varchar(255), primary key (id)) engine=InnoDB;
