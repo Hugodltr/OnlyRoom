@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardRoomComponent implements OnInit {
 
+  form: any = {};
+
   constructor() { }
 
   ngOnInit(): void {
