@@ -1,4 +1,5 @@
 import { defaultsDeep } from 'lodash';
+import { Room } from '../room/room';
 
 export class Facility {
     id: number;
