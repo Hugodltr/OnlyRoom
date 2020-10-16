@@ -27,4 +27,41 @@
             <button class="btn float-right" [routerLink]="['/add-user']"> Réserver </button>
         </div>
     </div>
+    <div class="card-header"> Ajouter une salle </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
+                    <div class="form-group">
+                        <label for="date">
+                            Date
+                        </label>
+                        <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required #date="ngModel" />
+                        <div class="alert-danger" *ngIf="f.submitted && date.invalid">
+                            <div *ngIf="date.errors.required">Date is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="beginHour">
+                            Heure de début
+                        </label>
+                        <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required #beginHour="ngModel" />
+                        <div class="alert-danger" *ngIf="f.submitted && beginHour.invalid">
+                            <div *ngIf="beginHour.errors.required">beginHour is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="endHour">
+                            Heure de fin
+                        </label>
+                        <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required #endHour="ngModel" />
+                        <div class="alert-danger" *ngIf="f.submitted && endHour.invalid">
+                            <div *ngIf="endHour.errors.required">Date is required</div>
+                        </div>
+                    </div>
+                    <button class="btn float-right" [routerLink]="['/add-user']"> Réserver </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

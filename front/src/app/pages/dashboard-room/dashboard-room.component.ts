@@ -11,6 +11,7 @@ export class DashboardRoomComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   roomId: number;
+  form: any = {};
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
