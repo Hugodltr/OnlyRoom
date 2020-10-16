@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-room',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardRoomComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
+
+  roomId: number;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.roomId = params['roomId'];
+    });
   }
 
 }

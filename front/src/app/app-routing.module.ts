@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'list', component: ListUsersComponent },
   { path: 'list-rooms', component: ListRoomsComponent },
   { path: 'add-room', component: AddRoomComponent },
-  { path: 'dashboard-room', component: DashboardRoomComponent },
+  { path: 'dashboard-room/:roomId', component: DashboardRoomComponent },
   { path: 'search', component: SearchComponent }];
 
 @NgModule({

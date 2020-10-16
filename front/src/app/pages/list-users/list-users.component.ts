@@ -49,5 +49,4 @@ export class ListUsersComponent implements OnInit {
 
     this.facilityService.addFacility(facility).subscribe(facility => this.facilities.push(facility));
   }
-
 }

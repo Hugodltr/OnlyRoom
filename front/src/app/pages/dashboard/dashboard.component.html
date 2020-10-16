@@ -38,7 +38,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let room of rooms">
-                        <td>{{room.name}}</td>
+                        <td>
+                            <a routerLink="/dashboard-room/{{room.id}}">
+                                {{room.name}}
+                            </a>
+                        </td>
                         <td>{{room.capacity}}</td>
                         <td>
                             <span *ngFor="let facility of room.facilities">- {{facility.name}} </span>
