@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  isAdmin = false;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
