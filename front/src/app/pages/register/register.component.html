@@ -32,7 +32,7 @@
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required
                                 email #email="ngModel" />
-                            <div class="alert" *ngIf="f.submitted && email.invalid">
+                            <div class="alert-danger" *ngIf="f.submitted && email.invalid">
                                 <div class="alert" *ngIf="email.errors.required">Champ obligatoire</div>
                                 <div class="alert" *ngIf="email.errors.email">
                                     Le mail doit être valide
