@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  isAdmin = false;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -23,6 +24,12 @@ export class AppComponent implements OnInit {
       this.roles = user.roles;
 
       this.username = user.username;
+
+      this.roles.forEach(role => {
+        if (role == "ROLE_ADMIN") {
+          this.isAdmin = true;
+        }
+      });
     }
   }
 
