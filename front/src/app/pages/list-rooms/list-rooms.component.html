@@ -21,7 +21,7 @@
                         <td>
                             <span *ngFor="let facility of room.facilities">- {{facility.name}} </span>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" *ngIf="isAdmin">
                             <a (click)="deleteRoom(room.id)">
                                 <fa-icon [icon]="faTrash"></fa-icon>
                             </a>
@@ -29,7 +29,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div *ngIf="isAdmin">
+            <div>
                 <button class="btn float-right" [routerLink]="['/add-room']"> Ajouter une salle </button>
             </div>
         </div>

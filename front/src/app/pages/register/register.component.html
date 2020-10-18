@@ -11,12 +11,12 @@
                             <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
                                 minlength="3" maxlength="20" #username="ngModel" />
                             <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-                                <div *ngIf="username.errors.required">Username is required</div>
-                                <div *ngIf="username.errors.minlength">
-                                    Username must be at least 3 characters
+                                <div class="alert" *ngIf="username.errors.required">Champ obligatoire </div>
+                                <div class="alert" *ngIf="username.errors.minlength">
+                                    Doit contenir au moins 3 caratères
                                 </div>
-                                <div *ngIf="username.errors.maxlength">
-                                    Username must be at most 20 characters
+                                <div class="alert" *ngIf="username.errors.maxlength">
+                                    Ne doit pas dépasser 20 caratères
                                 </div>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <input type="date" class="form-control" name="birthDate" [(ngModel)]="form.birthDate"
                                 required #birthDate="ngModel" />
                             <div class="alert-danger" *ngIf="f.submitted && birthDate.invalid">
-                                <div *ngIf="birthDate.errors.required">Birth date is required</div>
+                                <div class="alert" *ngIf="birthDate.errors.required">Champ obligatoire </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -33,9 +33,9 @@
                             <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required
                                 email #email="ngModel" />
                             <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-                                <div *ngIf="email.errors.required">Email is required</div>
-                                <div *ngIf="email.errors.email">
-                                    Email must be a valid email address
+                                <div class="alert" *ngIf="email.errors.required">Champ obligatoire</div>
+                                <div class="alert" *ngIf="email.errors.email">
+                                    Le mail doit être valide
                                 </div>
                             </div>
                         </div>
@@ -44,9 +44,9 @@
                             <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
                                 required minlength="6" #password="ngModel" />
                             <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-                                <div *ngIf="password.errors.required">Password is required</div>
-                                <div *ngIf="password.errors.minlength">
-                                    Password must be at least 6 characters
+                                <div class="alert" *ngIf="password.errors.required">Champ obligatoire </div>
+                                <div class="alert" *ngIf="password.errors.minlength">
+                                    Le mot de passe doit contenir 6 caractères
                                 </div>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                         </div>
 
                         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                            Signup failed!<br />{{ errorMessage }}
+                            Echec!<br />{{ errorMessage }}
                         </div>
                     </form>
 
                     <div class="alert alert-success" *ngIf="isSuccessful">
-                        Your registration is successful!
+                        Creation du compte avec succes!
                     </div>
                 </div>
             </div>

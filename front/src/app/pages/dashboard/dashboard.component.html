@@ -1,13 +1,13 @@
 <div class="container-fluid">
 
     <div class="card  m-5">
-        <div class="card-header"> Réunions </div>
+        <div class="card-header"> Mes réunions </div>
         <div class="card-body">
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nom de la salle</th>
+                        <th scope="col">Salle</th>
                         <th scope="col">Date</th>
                         <th scope="col">Heure de début</th>
                         <th scope="col">Heure de fin </th>
@@ -20,11 +20,6 @@
                         <td>{{resa.reservation.date | slice:0:10}}</td>
                         <td>{{resa.reservation.beginHour | numToTime}}</td>
                         <td>{{resa.reservation.endHour | numToTime}}</td>
-                        <td class="text-center">
-                            <a (click)="deleteResa(resa.reservation.id)">
-                                <fa-icon [icon]="faTrash"></fa-icon>
-                            </a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -66,18 +61,24 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead">
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Nom de la salle</th>
                         <th scope="col">Date</th>
                         <th scope="col">Heure de début</th>
-                        <th scope="col">Heure de fin</th>
+                        <th scope="col">Heure de fin </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let room of resa">
-                        <td>{{room.name}}</td>
-                        <td>{{room.capacity}}</td>
-                        <td>
-                            <span *ngFor="let facility of room.facilities">- {{facility.name}} </span>
+                    <tr *ngFor="let resa of reservations">
+                        <td>{{resa.reservation.id}}</td>
+                        <td>{{resa.room.name}}</td>
+                        <td>{{resa.reservation.date | slice:0:10}}</td>
+                        <td>{{resa.reservation.beginHour | numToTime}}</td>
+                        <td>{{resa.reservation.endHour | numToTime}}</td>
+                        <td class="text-center">
+                            <a (click)="deleteResa(resa.reservation.id)">
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                            </a>
                         </td>
                     </tr>
                 </tbody>
