@@ -24,16 +24,7 @@ export class DashboardRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.roomId = Number(this.route.snapshot.paramMap.get('roomId'));
-    this.roomService.getRoom(this.roomId).subscribe(room => {
-      // for (let i = 0; i < room.reservations.length; i++) {
-      //   const reservation = room.reservations[i];
-      //   reservation.beginHour = reservation.beginHour.substr(0, 2) + ':' + reservation.beginHour.substr(2);
-      //   reservation.endHour = reservation.endHour.substr(0, 2) + ':' + reservation.endHour.substr(2);
-      //   room.reservations[i] = reservation;
-      // }
-      this.room = room
-
-    });
+    this.roomService.getRoom(this.roomId).subscribe(room => this.room = room);
   }
 
   onSubmit(ngForm: NgForm) {

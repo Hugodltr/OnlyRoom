@@ -20,4 +20,6 @@ public interface RoomDAO extends CrudRepository<Room, Long> {
 
     @Query("SELECT r FROM rooms r INNER JOIN r.facilities f WHERE (f.id IN ?5 AND r.capacity >= ?1 AND (r.id NOT IN ( SELECT resa.room.id FROM reservations resa WHERE (resa.date = ?2 AND ((resa.beginHour >= ?3 AND resa.beginHour <= ?4) OR (resa.endHour >= ?4 AND resa.endHour <= ?4)))))) GROUP BY r HAVING COUNT(DISTINCT f.id) = ?6")
     List<Room> searchRoomWithFacility(Integer capacity, Date date, Integer beginHour, Integer endHour, List<Long> facilitiesId, Long facilitiesCount);
+
+    List<Room> findRoomByReservationsId(Long reservationId);
 }
