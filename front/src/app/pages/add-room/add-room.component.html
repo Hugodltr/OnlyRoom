@@ -9,7 +9,8 @@
                             <label for="name">
                                 Nom de la salle
                             </label>
-                            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required #name="ngModel" minlength="2" />
+                            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
+                                #name="ngModel" minlength="2" />
                             <div class="alert-danger" *ngIf="f.submitted && name.invalid">
                                 <div *ngIf="name.errors.required">Name is required</div>
                             </div>
@@ -18,7 +19,8 @@
                             <label for="capacity">
                                 Capacité
                             </label>
-                            <input type="number" class="form-control" name="capacity" [(ngModel)]="form.capacity" required #capacity="ngModel" min="0" />
+                            <input type="number" class="form-control" name="capacity" [(ngModel)]="form.capacity"
+                                required #capacity="ngModel" min="0" />
                             <div class="alert-danger" *ngIf="f.submitted && capacity.invalid">
                                 <div *ngIf="capacity.errors.required">Capacity is required</div>
                             </div>
@@ -28,12 +30,14 @@
                                 Equipement
                             </label>
 
-                            <select name="facilities" multiple class="form-control" [(ngModel)]="form.facilities" required>
-                                <option *ngFor="let facility of facilities; let i = index" [value]="i">{{facility.name}}</option>
+                            <select name="facilities" multiple class="form-control" [(ngModel)]="form.facilities"
+                                required>
+                                <option *ngFor="let facility of facilities; let i = index" [value]="i">{{facility.name}}
+                                </option>
                             </select>
 
                         </div>
-                        <button class="btn btn-primary" type="submit">Ajouter une salle</button>
+                        <button class="btn btn-primary" type="submit" href="/list-room">Ajouter une salle</button>
                     </form>
                 </div>
             </div>
