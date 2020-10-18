@@ -1,0 +1,13 @@
+.card-header {
+    background-color:#D4EFFB;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn {
+    background-color:#1E90FF;
+    color : white;
+}
+.alert{
+    margin-top: 20px;
+}

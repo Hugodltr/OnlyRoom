@@ -8,6 +8,7 @@ import { DashboardRoomComponent } from './pages/dashboard-room/dashboard-room.co
 import { AddRoomComponent } from './pages/add-room/add-room.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { DashboardReservationComponent } from './pages/dashboard-reservation/dashboard-reservation.component'
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'list-rooms', component: ListRoomsComponent },
   { path: 'add-room', component: AddRoomComponent },
   { path: 'dashboard-room/:roomId', component: DashboardRoomComponent },
+  { path: 'dashboard-reservation/:reservationId', component: DashboardReservationComponent },
   { path: 'search', component: SearchComponent }];
 
 @NgModule({

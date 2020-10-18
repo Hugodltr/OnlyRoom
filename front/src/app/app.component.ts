@@ -9,7 +9,6 @@ import { TokenStorageService } from './services/security/token-storage.service';
 export class AppComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
-  isAdmin = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
