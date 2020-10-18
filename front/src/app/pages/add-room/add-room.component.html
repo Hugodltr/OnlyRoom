@@ -2,45 +2,43 @@
     <div class="card m-5">
         <div class="card-header"> Ajouter une salle </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
-                        <div class="form-group">
-                            <label for="name">
-                                Nom de la salle
-                            </label>
-                            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
-                                #name="ngModel" minlength="2" />
-                            <div class="alert-danger" *ngIf="f.submitted && name.invalid">
-                                <div *ngIf="name.errors.required">Name is required</div>
-                            </div>
+            <div class="col-sm-offset-2">
+                <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
+                    <div class="form-group">
+                        <label for="name">
+                            Nom de la salle
+                        </label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
+                            #name="ngModel" minlength="2" />
+                        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                            <div *ngIf="name.errors.required">Name is required</div>
                         </div>
-                        <div class="form-group">
-                            <label for="capacity">
-                                Capacité
-                            </label>
-                            <input type="number" class="form-control" name="capacity" [(ngModel)]="form.capacity"
-                                required #capacity="ngModel" min="0" />
-                            <div class="alert-danger" *ngIf="f.submitted && capacity.invalid">
-                                <div *ngIf="capacity.errors.required">Capacity is required</div>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="capacity">
+                            Capacité
+                        </label>
+                        <input type="number" class="form-control" name="capacity" [(ngModel)]="form.capacity" required
+                            #capacity="ngModel" min="0" />
+                        <div class="alert-danger" *ngIf="f.submitted && capacity.invalid">
+                            <div *ngIf="capacity.errors.required">Capacity is required</div>
                         </div>
-                        <div class="form-group">
-                            <label for="facilities">
-                                Equipement
-                            </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="facilities">
+                            Equipement
+                        </label>
 
-                            <select name="facilities" multiple class="form-control" [(ngModel)]="form.facilities"
-                                required>
-                                <option *ngFor="let facility of facilities; let i = index" [value]="i">{{facility.name}}
-                                </option>
-                            </select>
+                        <select name="facilities" multiple class="form-control" [(ngModel)]="form.facilities" required>
+                            <option *ngFor="let facility of facilities; let i = index" [value]="i">{{facility.name}}
+                            </option>
+                        </select>
 
-                        </div>
-                        <button class="btn btn-primary" type="submit" href="/list-room">Ajouter une salle</button>
-                    </form>
-                </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" href="/list-room">Ajouter une salle</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>

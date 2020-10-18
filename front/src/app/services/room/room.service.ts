@@ -17,6 +17,10 @@ export class RoomService {
     this.url = environment.url;
   }
 
+  getRoom(id: number): Observable<Room> {
+    return this.http.get<Room>(`${this.url}/rooms/${id}`).pipe(timeout(10000));
+  }
+
   getRooms(): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.url}/rooms`).pipe(timeout(10000));
   }

@@ -1,5 +1,6 @@
 package io.epf.onlyroom.entity.user
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import io.epf.onlyroom.entity.guest.Guest
 import io.epf.onlyroom.entity.reservation.Reservation
 import io.epf.onlyroom.entity.role.Role
