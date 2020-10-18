@@ -1,5 +1,6 @@
 package io.epf.onlyroom.entity.facilities;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,11 +27,13 @@ public class FacilityController {
     }
 
     @PostMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     public Facility addFacility(@RequestBody Facility facility) {
         return this.facilityDAO.save(facility);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteFacility(@PathVariable Long id) {
         this.facilityDAO.deleteById(id);
     }

@@ -10,7 +10,8 @@ data class Room(
         @Id var id: Long?,
         @Column(name = "name") var name: String?,
         @Column(name = "capacity") var capacity: Int?,
-        @OneToMany(mappedBy="room") var reservations: List<Reservation>? = mutableListOf(),
+        @OneToMany(mappedBy="room")
+        var reservations: List<Reservation>? = mutableListOf(),
         @ManyToMany(cascade = [CascadeType.MERGE], fetch = FetchType.LAZY)
         @JoinTable(name = "room_facility",
                 joinColumns = [JoinColumn(name = "room_id", referencedColumnName = "id")],

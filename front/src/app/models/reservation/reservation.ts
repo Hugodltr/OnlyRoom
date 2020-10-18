@@ -1,5 +1,6 @@
 import { defaultsDeep } from 'lodash';
 import { Room } from '../room/room';
+import { User } from '../user/user.model';
 
 export class Reservation {
     id: number;
@@ -7,6 +8,7 @@ export class Reservation {
     beginHour: number;
     endHour: number;
     room: Room;
+    user: User;
 
 
     constructor(user?: Partial<Reservation>) {
