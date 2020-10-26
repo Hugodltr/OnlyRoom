@@ -1,7 +1,6 @@
 package io.epf.onlyroom.entity.reservation
 
 import com.fasterxml.jackson.annotation.*
-import io.epf.onlyroom.entity.guest.Guest
 import io.epf.onlyroom.entity.room.Room
 import io.epf.onlyroom.entity.user.User
 import java.util.*
@@ -14,7 +13,9 @@ data class Reservation(
         @Column(name = "date") var date: Date?,
         @Column(name = "begin_hour") var beginHour: Int?,
         @Column(name = "end_hour") var endHour: Int?,
-        @OneToMany(mappedBy="reservation") var guests: List<Guest>? = mutableListOf(),
+        @ManyToMany(mappedBy = "guests")
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        var guests: List<User>? = mutableListOf(),
         @ManyToOne
         @JoinColumn(name="room_id", nullable=false)
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

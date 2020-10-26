@@ -1,4 +1,5 @@
 import { defaultsDeep } from 'lodash';
+import { Reservation } from '../reservation/reservation';
 
 export class User {
   id: number;

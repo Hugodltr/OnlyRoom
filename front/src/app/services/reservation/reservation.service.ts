@@ -16,6 +16,14 @@ export class ReservationService {
     this.url = environment.url;
   }
 
+  getReservation(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/reservations/${id}`).pipe(timeout(10000));
+  }
+
+  getReservationGuest(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.url}/reservations/guest`).pipe(timeout(10000));
+  }
+
   getReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.url}/reservations`).pipe(timeout(10000));
   }

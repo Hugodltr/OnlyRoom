@@ -1,7 +1,6 @@
 package io.epf.onlyroom.entity.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import io.epf.onlyroom.entity.guest.Guest
 import io.epf.onlyroom.entity.reservation.Reservation
 import io.epf.onlyroom.entity.role.Role
 import java.util.*
@@ -24,6 +23,8 @@ data class User(
         @JoinTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")], inverseJoinColumns = [JoinColumn(name = "role_id")])
         var roles: Set<Role>? = HashSet(),
         @OneToMany(mappedBy="user") var reservations: List<Reservation>? = mutableListOf(),
-        @OneToMany(mappedBy="user") var guests: List<Guest>? = mutableListOf()) {
+        @ManyToMany(fetch = FetchType.LAZY)
+        @JoinTable(name = "user_guest", joinColumns = [JoinColumn(name = "user_id")], inverseJoinColumns = [JoinColumn(name = "reservation_id")])
+        var guests: List<Reservation>? = mutableListOf()) {
     constructor(name: String?, email: String?, birthDate: String?, passsword: String?) : this(null, name, email, birthDate, passsword, null, null, null)
 }

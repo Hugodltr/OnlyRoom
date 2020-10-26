@@ -14,12 +14,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let resa of reservations">
-                        <td>{{resa.reservation.id}}</td>
-                        <td>{{resa.room.name}}</td>
-                        <td>{{resa.reservation.date | slice:0:10}}</td>
-                        <td>{{resa.reservation.beginHour | numToTime}}</td>
-                        <td>{{resa.reservation.endHour | numToTime}}</td>
+                    <tr *ngFor="let guest of guests">
+                        <td>
+                            <a routerLink="/dashboard-reservation/{{guest.reservation.id}}">
+                                {{guest.reservation.id}}
+                            </a>
+                        </td>
+                        <td>
+                            <a routerLink="/dashboard-room/{{guest.room.id}}">
+                                {{guest.room.name}}
+                            </a>
+                        </td>
+                        <td>{{guest.reservation.date | slice:0:10}}</td>
+                        <td>{{guest.reservation.beginHour | numToTime}}</td>
+                        <td>{{guest.reservation.endHour | numToTime}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -70,9 +78,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let resa of reservations">
-                        <td>{{resa.reservation.id}}</td>
                         <td>
-                            <a routerLink="/dashboard-reservation/{{resa.id}}">
+                            <a routerLink="/dashboard-reservation/{{resa.reservation.id}}">
+                                {{resa.reservation.id}}
+                            </a>
+                        </td>
+                        <td>
+                            <a routerLink="/dashboard-room/{{resa.room.id}}">
                                 {{resa.room.name}}
                             </a>
                         </td>

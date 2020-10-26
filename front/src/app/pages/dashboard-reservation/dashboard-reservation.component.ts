@@ -7,6 +7,9 @@ import { RoomService } from 'src/app/services/room/room.service';
 import { TokenStorageService } from 'src/app/services/security/token-storage.service';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { Reservation } from 'src/app/models/reservation/reservation';
+import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user/user.model';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-dashboard-reservation',
@@ -15,35 +18,51 @@ import { Reservation } from 'src/app/models/reservation/reservation';
 })
 export class DashboardReservationComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private roomService: RoomService, private reservationService: ReservationService, private tokenStorageService: TokenStorageService) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   reservationId: number;
   form: any = {};
+  reservation: Reservation;
+  guests: any[];
   room: Room;
-  reservations: Reservation[];
+  users: User[];
+  user: any;
 
   ngOnInit(): void {
+    this.user = this.tokenStorageService.getUser();
     this.reservationId = Number(this.route.snapshot.paramMap.get('reservationId'));
-    this.reservationService.getReservation(this.reservationId).subscribe(reservations => this.reservations = reservations);
+    this.reservationService.getReservation(this.reservationId).subscribe(resa => {
+      this.reservation = resa.reservation;
+      this.room = resa.room;
+      this.guests = resa.guests.filter((thing, index, self) =>
+        index === self.findIndex((t) => (
+          t.id === thing.id
+        )));
+    });
+    this.userService.getUsers().subscribe(users => {
+      this.users = users
+    });
   }
 
   onSubmit(ngForm: NgForm) {
     console.log(ngForm);
 
-    const reservation = defaultsDeep({
-      id: null,
-      date: ngForm.form.value.date,
-      beginHour: ngForm.form.value.beginHour.replace(':', ''),
-      endHour: ngForm.form.value.endHour.replace(':', ''),
-      room: {
-        id: this.roomId
-      },
-      user: {
-        id: this.tokenStorageService.getUser().id,
-      }
-    });
+    let reservation = this.reservation;
+    if (reservation.guests) {
+      reservation.guests.push(this.users[ngForm.form.value.guest]);
+    }
+    else {
+      reservation.guests = [this.users[ngForm.form.value.guest]];
+    }
+    reservation.room = this.room;
+    reservation.user = {
+      id: this.user.id,
+      name: this.user.name,
+      email: this.user.email,
+      birthDate: this.user.birthDate
+    };
 
-    this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
+    this.reservationService.addReservation(reservation).subscribe(reservation => this.reservation = reservation);
   }
 
 }

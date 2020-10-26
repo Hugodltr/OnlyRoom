@@ -9,7 +9,7 @@ export class Reservation {
     endHour: number;
     room: Room;
     user: User;
-
+    guests: User[];
 
     constructor(user?: Partial<Reservation>) {
         defaultsDeep(this, user);

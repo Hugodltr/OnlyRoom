@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   rooms: Room[];
   reservations: Reservation[];
+  guests: Reservation[];
   faTrash = faTrash;
 
   constructor(private roomService: RoomService, private reservationService: ReservationService) { }
@@ -21,6 +22,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.roomService.freeRoom(this.getDate(), 0, 2359).subscribe(rooms => this.rooms = rooms);
     this.reservationService.getReservations().subscribe(reservations => this.reservations = reservations);
+    this.reservationService.getReservationGuest().subscribe(guests => this.guests = guests.filter((thing, index, self) =>
+      index === self.findIndex((t) => (
+        t.id === thing.id
+      ))));
   }
 
   deleteResa(id: number) {
