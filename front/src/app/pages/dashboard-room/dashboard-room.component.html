@@ -26,8 +26,7 @@
                     <label for="date">
                         Date
                     </label>
-                    <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required
-                        #date="ngModel" />
+                    <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required #date="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && date.invalid">
                         <div class="alert" *ngIf="date.errors.required">Champ obligatoire</div>
                     </div>
@@ -36,8 +35,7 @@
                     <label for="beginHour">
                         Heure de début
                     </label>
-                    <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required
-                        #beginHour="ngModel" />
+                    <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required #beginHour="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && beginHour.invalid">
                         <div class="alert" *ngIf="beginHour.errors.required">Champ obligatoire</div>
                     </div>
@@ -46,8 +44,7 @@
                     <label for="endHour">
                         Heure de fin
                     </label>
-                    <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required
-                        #endHour="ngModel" />
+                    <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required #endHour="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && endHour.invalid">
                         <div class="alert" *ngIf="endHour.errors.required">Champ obligatoire</div>
                     </div>

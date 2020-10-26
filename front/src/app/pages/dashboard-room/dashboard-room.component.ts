@@ -20,7 +20,6 @@ export class DashboardRoomComponent implements OnInit {
   roomId: number;
   form: any = {};
   room: Room;
-  reservations: Reservation[];
 
   ngOnInit(): void {
     this.roomId = Number(this.route.snapshot.paramMap.get('roomId'));
