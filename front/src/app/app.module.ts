@@ -16,6 +16,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NumToTimePipe } from './num-to-time.pipe';
+import { DashboardReservationComponent } from './pages/dashboard-reservation/dashboard-reservation.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NumToTimePipe } from './num-to-time.pipe';
     LoginComponent,
     RegisterComponent,
     NumToTimePipe,
+    DashboardReservationComponent,
   ],
   imports: [
     BrowserModule,

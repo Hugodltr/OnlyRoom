@@ -46,7 +46,7 @@
                         </td>
                         <td>{{room.capacity}}</td>
                         <td>
-                            <span *ngFor="let facility of room.facilities">- {{facility.name}} </span>
+                            <span *ngFor="let facility of room.facilities">- {{facility.name}} <br></span>
                         </td>
                     </tr>
                 </tbody>
@@ -71,7 +71,11 @@
                 <tbody>
                     <tr *ngFor="let resa of reservations">
                         <td>{{resa.reservation.id}}</td>
-                        <td>{{resa.room.name}}</td>
+                        <td>
+                            <a routerLink="/dashboard-reservation/{{resa.id}}">
+                                {{resa.room.name}}
+                            </a>
+                        </td>
                         <td>{{resa.reservation.date | slice:0:10}}</td>
                         <td>{{resa.reservation.beginHour | numToTime}}</td>
                         <td>{{resa.reservation.endHour | numToTime}}</td>
