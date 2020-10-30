@@ -52,13 +52,12 @@
                 <div class="form-group">
                     <select class="form-control" name="guest" [(ngModel)]="form.guest" required #guest="ngModel">
                         <option value="" selected disabled>--Séléctionnez un utilisateur--</option>
-                        <option *ngFor="let user of users; let index = index;" value="{{index}}">{{user.username}}</option>
+                        <option *ngFor="let user of users; let index = index;" value="{{index}}">{{user.username}}
+                        </option>
                     </select>
                 </div>
-
-                <button class="btn btn-primary float-right" type="submit"> Ajouter </button>
             </form>
+            <button class="btn btn-primary float-right" type="submit"> Ajouter </button>
         </div>
     </div>
-
 </div>

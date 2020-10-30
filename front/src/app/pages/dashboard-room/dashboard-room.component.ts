@@ -18,12 +18,19 @@ export class DashboardRoomComponent implements OnInit {
   constructor(private route: ActivatedRoute, private roomService: RoomService, private reservationService: ReservationService, private tokenStorageService: TokenStorageService) { }
 
   roomId: number;
+  reservations: Reservation[];
+  guests: Reservation[];
   form: any = {};
   room: Room;
 
   ngOnInit(): void {
     this.roomId = Number(this.route.snapshot.paramMap.get('roomId'));
     this.roomService.getRoom(this.roomId).subscribe(room => this.room = room);
+    this.reservationService.getReservations().subscribe(reservations => this.reservations = reservations);
+    this.reservationService.getReservationGuest().subscribe(guests => this.guests = guests.filter((thing, index, self) =>
+      index === self.findIndex((t) => (
+        t.id === thing.id
+      ))));
   }
 
   onSubmit(ngForm: NgForm) {

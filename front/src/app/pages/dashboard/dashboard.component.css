@@ -11,3 +11,10 @@
 .alert{
     margin-top: 20px;
 }
+
+.title {
+    font-weight: bold;
+}
+.nav-link{
+    color: #1E90FF;
+}

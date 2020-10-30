@@ -4,6 +4,7 @@ import { Room } from 'src/app/models/room/room';
 import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { RoomService } from 'src/app/services/room/room.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { TokenStorageService } from 'src/app/services/security/token-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +17,12 @@ export class DashboardComponent implements OnInit {
   reservations: Reservation[];
   guests: Reservation[];
   faTrash = faTrash;
+  isLoggedIn;
 
-  constructor(private roomService: RoomService, private reservationService: ReservationService) { }
+  constructor(private tokenStorageService: TokenStorageService, private roomService: RoomService, private reservationService: ReservationService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.roomService.freeRoom(this.getDate(), 0, 2359).subscribe(rooms => this.rooms = rooms);
     this.reservationService.getReservations().subscribe(reservations => this.reservations = reservations);
     this.reservationService.getReservationGuest().subscribe(guests => this.guests = guests.filter((thing, index, self) =>

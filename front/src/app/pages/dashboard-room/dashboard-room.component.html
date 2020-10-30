@@ -27,11 +27,15 @@
                     <th scope="col"> Heure de fin</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let reservation of room.reservations">
-                        <td>{{reservation.id}}</td>
-                        <td>{{reservation.date | slice:0:10}}</td>
-                        <td>{{reservation.beginHour | numToTime}}</td>
-                        <td>{{reservation.endHour | numToTime}}</td>
+                    <tr *ngFor="let resa of reservations">
+                        <td>
+                            <a routerLink="/dashboard-reservation/{{resa.reservation.id}}">
+                                {{resa.reservation.id}}
+                            </a>
+                        </td>
+                        <td>{{resa.reservation.date | slice:0:10}}</td>
+                        <td>{{resa.reservation.beginHour | numToTime}}</td>
+                        <td>{{resa.reservation.endHour | numToTime}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -45,7 +49,8 @@
                     <label for="date">
                         Date
                     </label>
-                    <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required #date="ngModel" />
+                    <input type="date" class="form-control" name="date" [(ngModel)]="form.date" required
+                        #date="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && date.invalid">
                         <div *ngIf="date.errors.required">Veuillez indiquer une date</div>
                     </div>
@@ -54,7 +59,8 @@
                     <label for="beginHour">
                         Heure de début
                     </label>
-                    <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required #beginHour="ngModel" />
+                    <input type="time" class="form-control" name="beginHour" [(ngModel)]="form.beginHour" required
+                        #beginHour="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && beginHour.invalid">
                         <div *ngIf="beginHour.errors.required">Veuillez indiquer une heure de début</div>
                     </div>
@@ -63,7 +69,8 @@
                     <label for="endHour">
                         Heure de fin
                     </label>
-                    <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required #endHour="ngModel" />
+                    <input type="time" class="form-control" name="endHour" [(ngModel)]="form.endHour" required
+                        #endHour="ngModel" />
                     <div class="alert-danger" *ngIf="f.submitted && endHour.invalid">
                         <div *ngIf="endHour.errors.required">Veuillez indiquer une heure de fin</div>
                     </div>
