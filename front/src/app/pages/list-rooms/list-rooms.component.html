@@ -29,7 +29,8 @@
                     </tr>
                 </tbody>
             </table>
-            <div [routerLinkActive]="['active']" *ngIf="isAdmin">
+            <div [routerLinkActive]="['active']">
+                <!-- *ngIf="isAdmin"-->
                 <button class="btn float-right" [routerLink]="['/add-room']"> Ajouter une salle </button>
             </div>
         </div>

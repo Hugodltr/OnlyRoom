@@ -11,15 +11,17 @@
                     <th scope="col"> Heure de fin</th>
                 </thead>
                 <tbody>
-                    <td>{{reservation.id}}</td>
-                    <td>
-                        <a routerLink="/dashboard-room/{{room.id}}">
-                            {{room.name}}
-                        </a>
-                    </td>
-                    <td>{{reservation.date | slice:0:10}}</td>
-                    <td>{{reservation.beginHour | numToTime}}</td>
-                    <td>{{reservation.endHour | numToTime}}</td>
+                    <tr>
+                        <td>{{reservation.id}}</td>
+                        <td>
+                            <a routerLink="/dashboard-room/{{room.id}}">
+                                {{room.name}}
+                            </a>
+                        </td>
+                        <td>{{reservation.date | slice:0:10}}</td>
+                        <td>{{reservation.beginHour | numToTime}}</td>
+                        <td>{{reservation.endHour | numToTime}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -48,16 +50,19 @@
     <div class=" card  m-5">
         <div class="card-header"> Ajouter des participants </div>
         <div class="card-body">
-            <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
-                <div class="form-group">
+            <form class="row" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" name="form">
+                <div class="form-group col-11">
                     <select class="form-control" name="guest" [(ngModel)]="form.guest" required #guest="ngModel">
                         <option value="" selected disabled>--Séléctionnez un utilisateur--</option>
                         <option *ngFor="let user of users; let index = index;" value="{{index}}">{{user.username}}
                         </option>
                     </select>
                 </div>
+                <div class="col-1">
+                    <button class="btn btn-primary float-right" type="submit"> Ajouter </button>
+                </div>
             </form>
-            <button class="btn btn-primary float-right" type="submit"> Ajouter </button>
+
         </div>
     </div>
 </div>

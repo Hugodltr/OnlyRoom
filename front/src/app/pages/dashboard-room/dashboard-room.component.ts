@@ -27,10 +27,7 @@ export class DashboardRoomComponent implements OnInit {
     this.roomId = Number(this.route.snapshot.paramMap.get('roomId'));
     this.roomService.getRoom(this.roomId).subscribe(room => this.room = room);
     this.reservationService.getReservations().subscribe(reservations => this.reservations = reservations);
-    this.reservationService.getReservationGuest().subscribe(guests => this.guests = guests.filter((thing, index, self) =>
-      index === self.findIndex((t) => (
-        t.id === thing.id
-      ))));
+
   }
 
   onSubmit(ngForm: NgForm) {
@@ -47,9 +44,15 @@ export class DashboardRoomComponent implements OnInit {
       user: {
         id: this.tokenStorageService.getUser().id,
       }
+
     });
 
     this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
+    this.reloadPage();
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 }

@@ -34,7 +34,9 @@
                             </option>
                         </select>
                     </div>
-                    <button class="btn" type="submit" [routerLink]="['/list-room']">Ajouter une salle</button>
+                    <div [routerLinkActive]="['active']">
+                        <button class="btn" type="submit" [routerLink]="['/list-rooms']">Ajouter la salle</button>
+                    </div>
                 </form>
             </div>
         </div>

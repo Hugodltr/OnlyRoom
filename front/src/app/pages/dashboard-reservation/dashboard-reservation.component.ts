@@ -63,7 +63,11 @@ export class DashboardReservationComponent implements OnInit {
     };
 
     this.reservationService.addReservation(reservation).subscribe(reservation => this.reservation = reservation);
+    this.reloadPage();
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 }
 

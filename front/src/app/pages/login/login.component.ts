@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  roleMessage = '';
   roles: string[] = [];
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
@@ -33,6 +34,14 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        this.roles.forEach(role => {
+          if (role == "ROLE_ADMIN") {
+            this.roleMessage = "Administrateur";
+          }
+          else {
+            this.roleMessage = "Utilisateur";
+          }
+        });
         this.reloadPage();
       },
       err => {

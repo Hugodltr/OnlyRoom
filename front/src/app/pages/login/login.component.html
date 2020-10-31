@@ -41,7 +41,7 @@
                     </form>
 
                     <div class="alert alert-success" *ngIf="isLoggedIn">
-                        Connecté en tant que {{ roles }}.
+                        Connecté en tant que {{ roleMessage }}.
                     </div>
                     <div class="nav-item float-right" [routerLinkActive]="['active']" *ngIf="isLoggedIn">
                         <a class="nav-link float-right" [routerLink]="['/']">Continuer</a>
