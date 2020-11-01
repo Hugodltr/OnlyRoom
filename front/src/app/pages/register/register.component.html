@@ -44,7 +44,7 @@
                             <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
                                 required minlength="6" #password="ngModel" />
                             <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-                                <div class="alert" *ngIf="password.errors.required">Champ obligatoire </div>
+                                <div class="alert" *ngIf="password.errors.required"> Champ obligatoire </div>
                                 <div class="alert" *ngIf="password.errors.minlength">
                                     Le mot de passe doit contenir 6 caractères
                                 </div>

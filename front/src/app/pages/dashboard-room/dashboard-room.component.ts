@@ -22,6 +22,10 @@ export class DashboardRoomComponent implements OnInit {
   guests: Reservation[];
   form: any = {};
   room: Room;
+  isLoggedIn = false;
+  errorMessage = '';
+  isSuccesful;
+
 
   ngOnInit(): void {
     this.roomId = Number(this.route.snapshot.paramMap.get('roomId'));
@@ -32,26 +36,35 @@ export class DashboardRoomComponent implements OnInit {
 
   onSubmit(ngForm: NgForm) {
     console.log(ngForm);
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    const reservation = defaultsDeep({
-      id: null,
-      date: ngForm.form.value.date,
-      beginHour: ngForm.form.value.beginHour.replace(':', ''),
-      endHour: ngForm.form.value.endHour.replace(':', ''),
-      room: {
-        id: this.roomId
-      },
-      user: {
-        id: this.tokenStorageService.getUser().id,
-      }
+    if (this.isLoggedIn) {
+      const reservation = defaultsDeep({
+        id: null,
+        date: ngForm.form.value.date,
+        beginHour: ngForm.form.value.beginHour.replace(':', ''),
+        endHour: ngForm.form.value.endHour.replace(':', ''),
+        room: {
+          id: this.roomId
+        },
+        user: {
+          id: this.tokenStorageService.getUser().id,
+        }
+      });
+      this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
 
-    });
 
-    this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
+      this.reloadPage();
+    }
+    else {
+      this.isSuccesful = false;
+      this.errorMessage = "Connectez vous pour reserver !";
+    }
   }
 
   reloadPage(): void {
     window.location.reload();
   }
+
 
 }
