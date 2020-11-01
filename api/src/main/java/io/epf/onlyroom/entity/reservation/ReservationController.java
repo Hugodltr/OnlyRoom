@@ -36,6 +36,7 @@ public class ReservationController {
     public ResponseEntity<MessageResponse> findById(@PathVariable Long id) {
         Optional<Reservation> optReservation = this.reservationDAO.findById(id);
 
+        // Check if reservation exist
         if(optReservation.isPresent()) {
             Reservation reservation = optReservation.get();
             ResaWithRoom resa = new ResaWithRoom(reservation, reservation.getRoom(), reservation.getGuests());
@@ -73,10 +74,14 @@ public class ReservationController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<MessageResponse> addReservation(@RequestBody Reservation reservation, Authentication authentication) {
         Optional<Reservation> optResa = null;
+
         if(reservation.getId() != null) {
             optResa = this.reservationDAO.findById(reservation.getId());
         }
+
+        // Check if reservation exist
         if(optResa != null && optResa.isPresent()) {
+            // Check if user that modifies the reservation is the owner of the reservation
             if(optResa.get().getUser().getId() != ((UserDetailsImpl)authentication.getPrincipal()).getId()) {
                 return ResponseEntity
                         .badRequest()
@@ -92,6 +97,7 @@ public class ReservationController {
                 return new ResponseEntity(this.reservationDAO.save(reservation), HttpStatus.OK);
             }
         } else {
+            // Check if user that modifies the reservation is the owner of the reservation
             if(reservation.getUser().getId() != ((UserDetailsImpl)authentication.getPrincipal()).getId()) {
                 return ResponseEntity
                         .badRequest()
@@ -99,6 +105,7 @@ public class ReservationController {
             } else {
                 List<Reservation> currentReservations = this.reservationDAO.currentReservations(reservation.getDate(), reservation.getBeginHour(), reservation.getEndHour(), reservation.getRoom().getId());
 
+                // Check if the room is already booked
                 if(currentReservations.isEmpty()) {
                     return new ResponseEntity(this.reservationDAO.save(reservation), HttpStatus.OK);
                 } else {
