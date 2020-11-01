@@ -48,7 +48,6 @@ export class DashboardRoomComponent implements OnInit {
     });
 
     this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
-    this.reloadPage();
   }
 
   reloadPage(): void {
