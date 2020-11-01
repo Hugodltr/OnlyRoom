@@ -22,6 +22,14 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.roles.forEach(role => {
+        if (role == "ROLE_ADMIN") {
+          this.roleMessage = "Administrateur";
+        }
+        else {
+          this.roleMessage = "Utilisateur";
+        }
+      });
     }
   }
 
@@ -42,6 +50,7 @@ export class LoginComponent implements OnInit {
             this.roleMessage = "Utilisateur";
           }
         });
+
         this.reloadPage();
       },
       err => {
