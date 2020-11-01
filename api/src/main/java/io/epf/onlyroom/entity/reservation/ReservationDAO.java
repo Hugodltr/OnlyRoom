@@ -13,6 +13,7 @@ import java.util.List;
  */
 @Repository
 public interface ReservationDAO extends CrudRepository<Reservation, Long> {
+    // Return reservations that happens at the same time
     @Query("SELECT resa FROM reservations resa WHERE (resa.date = ?1 AND resa.room.id = ?4 AND ((resa.beginHour <= ?2 AND resa.endHour >= ?2) OR (resa.beginHour <= ?3 AND resa.endHour >= ?3)))")
     List<Reservation> currentReservations(Date date, Integer beginHour, Integer endHour, Long roomId);
 
