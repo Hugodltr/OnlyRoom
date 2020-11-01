@@ -9,7 +9,7 @@ docker run --name mariadb --rm -e MYSQL_ROOT_PASSWORD=toor -e MYSQL_DATABASE=def
 ```
 
 3. Si vous n'avez pas Docker, et que vous avez un serveur MariaDB custom, vérifiez bien que vos utilisateurs / mdp sont les bons par rapport au fichier de configuration (src/main/resources/application.properties), et exécutez les scripts présents dans le dossier `initdb`
-![alt text](https://https://github.com/Hugodltr/OnlyRoom/tree/master/api/src/main/resources/screens/screen 1.bmp)
+![alt text](https://github.com/Hugodltr/OnlyRoom/tree/master/api/src/main/resources/screens/screen1.bmp)
 
 4. Run les fichiers suivants : TABLES.sql et DEFAULT_ENTRIES.sql dans IntelliJ
 
