@@ -32,8 +32,8 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteResa(id: number) {
-    this.reservationService.deleteReservation(id).subscribe(succes => {
-      this.reservations = this.reservations.filter(reservation => reservation.id !== reservation.id)
+    this.reservationService.deleteReservation(id).subscribe(success => {
+      document.location.reload();
     });
   }
 

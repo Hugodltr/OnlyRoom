@@ -8,6 +8,7 @@ import io.epf.onlyroom.payload.response.MessageResponse;
 import io.epf.onlyroom.security.services.UserDetailsImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -112,15 +113,23 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<MessageResponse> deleteReservation(@PathVariable Long id, Authentication authentication) {
-        if(this.reservationDAO.findById(id).get().getUser().getId() != ((UserDetailsImpl)authentication.getPrincipal()).getId()) {
+        /*Optional<Reservation> optReservation = this.reservationDAO.findById(id);
+        if(optReservation.isPresent()) {
+            Reservation reservation = optReservation.get();
+
+            if(reservation.getUser().getId() != ((UserDetailsImpl)authentication.getPrincipal()).getId()) {
+                return ResponseEntity
+                        .badRequest()
+                        .body(new MessageResponse("Error: user not authorized!"));
+            } else {*/
+                this.reservationDAO.deleteById(id);
+                return new ResponseEntity(id, HttpStatus.OK);/*
+            }
+        } else {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: user not authorized!"));
-        } else {
-            this.reservationDAO.deleteById(id);
-            return new ResponseEntity("Reservation deleted", HttpStatus.OK);
-        }
-
+                    .body(new MessageResponse("Error: id not found"));
+        }*/
     }
 
 }
