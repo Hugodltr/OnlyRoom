@@ -51,9 +51,9 @@ export class DashboardRoomComponent implements OnInit {
           id: this.tokenStorageService.getUser().id,
         }
       });
-      this.isSuccesful = true;
-      this.errorMessage = "Reservation avec succes !";
       this.reservationService.addReservation(reservation).subscribe(reservation => this.room.reservations.push(reservation));
+
+
       this.reloadPage();
     }
     else {
