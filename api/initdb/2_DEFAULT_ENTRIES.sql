@@ -13,7 +13,7 @@ INSERT INTO room_facility(room_id, facility_id) VALUES (1,1);
 INSERT INTO room_facility(room_id, facility_id) VALUES (1,2);
 INSERT INTO room_facility(room_id, facility_id) VALUES (2,1);
 INSERT INTO room_facility(room_id, facility_id) VALUES (3,3);
-INSERT INTO room_facility(room_id, facility_id) VALUES (4,4);
+INSERT INTO room_facility(room_id, facility_id) VALUES (3,4);
 INSERT INTO room_facility(room_id, facility_id) VALUES (4,5);
 INSERT INTO users(birth_date, email, password, username) VALUES ('12/02/1992','leon.pofire@epfedu.fr','leopof25!','leopof');
 INSERT INTO user_roles(1,2);
