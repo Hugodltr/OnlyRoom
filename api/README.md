@@ -1,4 +1,4 @@
-# Training Spring Boot
+# Only Room
 =====
 
 1. Importer le projet dans IntelliJ IDEA en important le fichier "pom.xml" à la racine de ce répertoire
@@ -9,7 +9,15 @@ docker run --name mariadb --rm -e MYSQL_ROOT_PASSWORD=toor -e MYSQL_DATABASE=def
 ```
 
 3. Si vous n'avez pas Docker, et que vous avez un serveur MariaDB custom, vérifiez bien que vos utilisateurs / mdp sont les bons par rapport au fichier de configuration (src/main/resources/application.properties), et exécutez les scripts présents dans le dossier `initdb`
+![alt text](https://https://github.com/Hugodltr/OnlyRoom/tree/master/api/src/main/resources/screens/screen 1.bmp)
 
-4. Tous les scripts sql contenus dans le dossier initdb seront exécutés automatiquement lors du premier chargement de la DB.
+4. Run les fichiers suivants : TABLES.sql et DEFAULT_ENTRIES.sql dans IntelliJ
 
 5. Lancez l'application via IntelliJ, et vérifiez qu'elle fonctionne sur http://localhost:8080 (par défaut)
+
+# Pour le front :
+
+1. Lancer l'application avec IntelliJ, et ouvrir la page de l'application sur http://localhost:4200
+
+2. Se connecter avec un des deux comptes utilisateurs : admin : username = leopof, mdp = leopof25!
+                                                        user  : username = marc ofes, mdp = marcofes
